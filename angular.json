@@ -25,9 +25,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/@grapecity/spread-sheets/styles/gc.spread.sheets.excel2013white.css"
             ],
-            "scripts": []
+            "scripts": [
+              
+              "./node_modules/@grapecity/spread-sheets/dist/gc.spread.sheets.all.min.js"
+            ]
+
           },
           "configurations": {
             "production": {
@@ -94,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "e90fbf85-b704-44af-a57a-078ff391ca84"
   }
 }

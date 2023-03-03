@@ -6,7 +6,9 @@
     "types": []
   },
   "files": [
-    "src/main.ts"
+    "src/main.ts",
+    "./node_modules/@grapecity/spread-sheets-angular/grapecity-spread-sheets-angular.d.ts",
+    "./node_modules/@grapecity/spread-sheets/dist/gc.spread.sheets.d.ts"
   ],
   "include": [
     "src/**/*.d.ts"
