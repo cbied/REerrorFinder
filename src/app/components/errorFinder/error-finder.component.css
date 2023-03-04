@@ -1,0 +1,89 @@
+  
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .excel-container {
+    flex-grow: 1;
+    margin: 0 0 2rem 0;
+  }
+
+
+  .content {
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title {
+    font-weight: 600;
+  }
+
+  .buttons {
+    min-width: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+
+  .loadExcelInput, .exportExcel {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .exportExcel, .loadExcelInput {
+    margin-bottom: 1rem;
+    min-width: 10rem;
+  }
+
+  .exportExcel h3, .loadExcelInput h3 {
+    margin: 0 2rem;
+  }
+
+
+  
+  .errorCount {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  
+
+  @media screen and (max-width: 480px) {
+    .content {
+      background-color: lightgreen;
+    }
+    
+  }
+
+  @media screen and (max-width: 819px) {
+
+    .container {
+
+    }
+
+    .excel-container {
+        display: none;
+      }
+
+      .buttons {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+  }
