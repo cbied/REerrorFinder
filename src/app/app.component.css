@@ -8,12 +8,16 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  html {
+  .container {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .container {
-    width: 100%
+  .excel-container {
+    flex-grow: 1;
+    margin: 0 0 2rem 0;
   }
 
 
@@ -21,7 +25,6 @@
     display: flex;    
     flex-direction: column;
     align-items: center;
-    
   }
 
   .title {
@@ -29,8 +32,10 @@
   }
 
   .buttons {
+    min-width: 30rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 1rem;
   }
 
@@ -50,11 +55,14 @@
     margin: 0 2rem;
   }
 
-  .excel-container {
-    display: flex;
-    justify-content: center;
-    margin: 0 0 2rem 0;
+
+  
+  .errorCount {
+    font-size: 2rem;
+    font-weight: bold;
   }
+
+  
 
   @media screen and (max-width: 480px) {
     .content {
@@ -64,7 +72,18 @@
   }
 
   @media screen and (max-width: 819px) {
+
+    .container {
+
+    }
+
     .excel-container {
         display: none;
+      }
+
+      .buttons {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
       }
   }

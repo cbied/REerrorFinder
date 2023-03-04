@@ -21,10 +21,12 @@ export class AppComponent {
   descRow:string = '';
   landVal:string = '';
   descRowArr:string[] = [];
+  count = 0;
 
   constructor() {
     this.spread = new GC.Spread.Sheets.Workbook();
     this.excelIO = new Excel.IO();
+    
   }
 
   workbookInit(args: any) {
@@ -36,15 +38,14 @@ export class AppComponent {
 
 
 
-FindErrors() {
-  
-  const sheetOne = this.spread.getSheet(1);
- 
 
+
+async findErrors() {
+  const sheetOne = this.spread.getSheet(1);
   let colCount = sheetOne.getColumnCount(GC.Spread.Sheets.SheetArea.viewport)
   let rowCount = sheetOne.getRowCount(GC.Spread.Sheets.SheetArea.viewport)
   console.log(rowCount)
-
+  
   // Find Row
   for (let row = 0; row < rowCount; row++) {
    
@@ -58,6 +59,7 @@ FindErrors() {
     let landUse = sheetOne.getValue(row, 6)
     let landType = sheetOne.getValue(row, 25)
     let style = new GC.Spread.Sheets.Style();
+    
     style.backColor = "red";
     // Find row that is a condo
     if (cellName === 'CONDO' || cellName === 'DUPLEX CONDOS') {
@@ -68,15 +70,14 @@ FindErrors() {
       if (landValue !== 0 || grossAc !== 0 || 
           landUse !== "CDO" || landType !== "NL" || 
           structType !== "Condo" || structName !== "Condo") {
-    
-            console.log(row)
-            console.log(col)
-        sheetOne.setStyle(row,col,style,GC.Spread.Sheets.SheetArea.viewport)
+        sheetOne.setStyle(row,col,style,GC.Spread.Sheets.SheetArea.viewport);
+        this.count++;
       }
 
       if (structType !== structName ) {
         style.backColor = 'green'
-        sheetOne.setStyle(row,0,style,GC.Spread.Sheets.SheetArea.viewport)
+        sheetOne.setStyle(row,0,style,GC.Spread.Sheets.SheetArea.viewport);
+        this.count++;
       }
 
       // if statement for if floor, type, or view has empty cell, flag for error
@@ -89,10 +90,12 @@ FindErrors() {
     if (cellName === "TOWNHOUSE") {
       if (landValue === 0 || grossAc === 0 && structType !== structName) {
         sheetOne.setStyle(row,0,style,GC.Spread.Sheets.SheetArea.viewport)
+        this.count++;
       }
 
       if (landValue === 0 || grossAc === 0 ) {
         sheetOne.setStyle(row,col,style,GC.Spread.Sheets.SheetArea.viewport)
+        this.count++;
       }
     }
 
@@ -106,19 +109,12 @@ FindErrors() {
         cellName === "FEDERAL EXEMPT" || cellName === "COMMERICAL") {
       style.backColor = 'orange'
       sheetOne.setStyle(row,col,style,GC.Spread.Sheets.SheetArea.viewport)
-
-      
+      this.count++;   
     }
-
-
-
+   }
   }
 
-  
-  
-
-}
-
+  alert('Done! Please press "Save Excel!" to download updated Excel spread sheet')
 }
 
 onFileChange(args: any) {
@@ -130,7 +126,7 @@ onFileChange(args: any) {
       //   alert('load successfully');
       // }, 0);
     }, (error: any) => {
-      alert('load fail');
+      alert('load fail:' + error);
     });
   }
 }
