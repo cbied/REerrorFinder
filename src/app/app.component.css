@@ -1,0 +1,16 @@
+
+.matToolbar {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.menuLinks a {
+    margin-right: 2rem;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.sidenavContainer {
+    
+}

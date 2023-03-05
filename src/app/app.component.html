@@ -1,7 +1,28 @@
-<nav>
-    <a routerLink="/home">Home</a>
-    <a routerLink="/errorFinder">Error Finder</a>
-    <a routerLink="/documentation">Documentation</a>
-  </nav>
+<div class="navbar">
+  <mat-toolbar class="matToolbar" color="primary">
+
+    <span class="spacer">Real Estate Data Error Finder</span>
+
+    <div class="menuLinks" fxShow="true" fxHide.lt-md="true">
+      <!-- The following menu items be hidden on both SM and XS screen sizes -->
+      <a href="/home" mat-button>Home</a>
+      <a routerLink="/errorFinder" mat-button>Error Finder</a>
+      <a href="/documentation" mat-button>Documentation</a>
+    </div>
+
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button (click)="sidenav.toggle()">Show Side Menu</button>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav #sidenav fxLayout="column">
+      <div fxLayout="column">
+        <a (click)="sidenav.toggle()" href="#" mat-button>Close</a>
+        <a href="/home" mat-button>Home</a>
+        <a href="/errorFinder" mat-button>Error Finder</a>
+        <a href="/documentation" mat-button>Documentation</a>
+      </div>
+    </mat-sidenav>
+</div>
 <router-outlet></router-outlet>
 
