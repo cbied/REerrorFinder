@@ -11,6 +11,11 @@
     text-decoration: none;
 }
 
-.sidenavContainer {
-    
+
+.closed {
+    height: 4rem
+}
+
+.open {
+    height: 9rem
 }

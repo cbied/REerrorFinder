@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar" [ngClass]="status ? 'open' : 'closed'">
   <mat-toolbar class="matToolbar" color="primary">
 
     <span class="spacer">Real Estate Data Error Finder</span>
@@ -11,13 +11,12 @@
     </div>
 
     <div fxShow="true" fxHide.gt-sm="true">
-      <button (click)="sidenav.toggle()">Show Side Menu</button>
+      <button (click)="sidenav.toggle()" (click)="clickEvent()" >Show Side Menu</button>
     </div>
   </mat-toolbar>
 
   <mat-sidenav #sidenav fxLayout="column">
-      <div fxLayout="column">
-        <a (click)="sidenav.toggle()" href="#" mat-button>Close</a>
+      <div fxLayout="column"  >
         <a href="/home" mat-button>Home</a>
         <a href="/errorFinder" mat-button>Error Finder</a>
         <a href="/documentation" mat-button>Documentation</a>

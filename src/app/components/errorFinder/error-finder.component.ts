@@ -104,13 +104,13 @@ async findErrors() {
 
 
     // These ColNames should not be in condos
-    if (cellName === "RESIDENTIAL" || cellName === "COMM CONDO" || 
-        cellName === "MULTIFAMILY 2-4" || cellName === "APARTMENT" ||
-        cellName === "FEDERAL EXEMPT" || cellName === "COMMERICAL") {
-      style.backColor = 'orange'
-      sheetOne.setStyle(row,col,style,GC.Spread.Sheets.SheetArea.viewport)
-      this.count++;   
-    }
+    // const residentialTypes = ["RESIDENTIAL", "COMM CONDO", "MULTIFAMILY 2-4", "APARTMENT", "FEDERAL EXEMPT", "COMMERICAL"];
+    const residentialTypes = ["TOWNHOUSE", "CONDO", "DUPLEX CONDO"];
+if (!residentialTypes.includes(cellName)) {
+  style.backColor = 'orange';
+  sheetOne.setStyle(row, col, style, GC.Spread.Sheets.SheetArea.viewport);
+  this.count++;   
+}
    }
   }
 

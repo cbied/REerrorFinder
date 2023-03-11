@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, HostListener, ElementRef, Input  } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +12,25 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class AppComponent {
 
   constructor(
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
-  name = '';
+  name: string = '';
+  status: boolean = false;
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.name = params['home'];
     })
   }
+
+ 
+
+ clickEvent(){
+  console.log(this.status)
+  this.status = !this.status;    
+  console.log(this.status)   
+}
 
 }
   
