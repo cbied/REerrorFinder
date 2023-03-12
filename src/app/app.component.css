@@ -1,10 +1,12 @@
 
+/* Navbar */
 .matToolbar {
     display: flex;
     justify-content: space-between;
     
 }
 
+/* Navbar links */
 .menuLinks a {
     margin-right: 2rem;
     color: whitesmoke;
@@ -12,10 +14,21 @@
 }
 
 
+/* toggle munu closed */
 .closed {
     height: 4rem
 }
 
+/* toggle munu open */
 .open {
     height: 9rem
 }
+
+/* Responsive */
+
+@media screen and (max-width: 480px) {
+    .closed {
+      height: 3rem;
+    }
+    
+  }

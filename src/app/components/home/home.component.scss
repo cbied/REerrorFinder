@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@300;700;900&display=swap");
 
 .container {
+  /* Body */
     display: flex;
     flex-direction: column;
-
 }
 
 .hero {
     /* Body */
     width: 100%;
-    
+    height: calc(105vh - 4rem);
     /* Display buttons - column */
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
     /* The image used */
     background-image: url("../../../assets/spreadsheet.jpg");
     /* Set a specific height of image */
-    min-height: 500px;
+    min-height: 400px;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -38,16 +38,16 @@ body {
   );
 }
 
+// Header section
 .header {
-  max-width: 1500px;
   margin: 0 auto;
-  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(90vh - 4rem);
+  height: calc(55vh - 4rem);
 }
 
+// hero text section
 .title-wrapper {
   display: grid;
   align-items: center;
@@ -55,6 +55,7 @@ body {
   transform: skew(0, -10deg);
 }
 
+// Welcome to
 .top-title {
   order: 1;
   text-align: center;
@@ -65,12 +66,13 @@ body {
   padding-right: 2rem;
 }
 
+// name section
 .sweet-title {
   order: 2;
   color: #fde9ff;
   font-weight: 900;
   text-transform: uppercase;
-  font-size: clamp(3rem, 10vw, 5rem);
+  font-size: clamp(3rem, 8vw, 6rem);
   line-height: 0.75em;
   text-align: center;
   text-shadow: 3px 1px 1px #4af7ff, 2px 2px 1px #165bfb, 4px 2px 1px #4af7ff,
@@ -78,10 +80,9 @@ body {
     6px 4px 1px #4af7ff, 5px 5px 1px #165bfb, 7px 5px 1px #4af7ff,
     6px 6px 1px #165bfb, 8px 6px 1px #4af7ff, 7px 7px 1px #165bfb,
     9px 7px 1px #4af7ff;
+  }
 
-    
-    }
-
+// text in sweet-title section
 .sweet-title span {
         display: block;
         position: relative;
@@ -102,10 +103,20 @@ body {
         }
       }
 
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+
+// Buttons section
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(35vh);
+}
+
+// target buttons in buttons section
+.buttons button {
+  height: 5rem;
+  width: 16rem;
+  margin-bottom: 1rem;
 }
 
 .buttons.errorFinder {
@@ -125,4 +136,38 @@ body {
     /* Body */
     width: 100%;
     height: 20rem;
+}
+
+// Responsive
+
+@media screen and (max-width: 480px) {
+
+  .hero {
+    height: calc(105vh - 4rem);
+  }
+
+  .header {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(60vh - 4rem);
+  }
+
+  .buttons {
+    height: calc(30vh - 4rem);
+}
+  
+}
+
+@media screen and (max-width: 819px) {
+  .sweet-title {
+    font-size: clamp(3rem, 10vw, 7rem);
+  }
+
+ 
+
+  
 }

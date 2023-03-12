@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef, Input  } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -25,12 +25,9 @@ export class AppComponent {
   }
 
  
-
- clickEvent(){
-  console.log(this.status)
-  this.status = !this.status;    
-  console.log(this.status)   
-}
+  clickEvent(){
+   this.status = !this.status;     
+  }
 
 }
   

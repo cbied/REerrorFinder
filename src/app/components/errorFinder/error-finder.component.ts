@@ -36,10 +36,6 @@ title = 'errorFinder';
 
 }
 
-
-
-
-
 async findErrors() {
   const sheetOne = this.spread.getSheet(1);
   let colCount = sheetOne.getColumnCount(GC.Spread.Sheets.SheetArea.viewport)
