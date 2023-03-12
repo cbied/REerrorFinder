@@ -8,29 +8,28 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .content {
+    /* Body struture */
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+  }
+
   .container {
+    /* Body struture */
     width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
   }
 
+  /* Spreadsheet container */
   .excel-container {
     flex-grow: 1;
     margin: 0 0 2rem 0;
   }
 
-
-  .content {
-    display: flex;    
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .title {
-    font-weight: 600;
-  }
-
+  /* Buttons Container */
   .buttons {
     min-width: 30rem;
     display: flex;
@@ -43,10 +42,6 @@
   .loadExcelInput, .exportExcel {
     display: flex;
     justify-content: space-between;
-
-  }
-
-  .exportExcel, .loadExcelInput {
     margin-bottom: 1rem;
     min-width: 10rem;
   }
@@ -55,27 +50,20 @@
     margin: 0 2rem;
   }
 
-
-  
   .errorCount {
     font-size: 2rem;
     font-weight: bold;
   }
 
-  
+  /* Responsive */
 
   @media screen and (max-width: 480px) {
     .content {
       background-color: lightgreen;
     }
-    
   }
 
   @media screen and (max-width: 819px) {
-
-    .container {
-
-    }
 
     .excel-container {
         display: none;
