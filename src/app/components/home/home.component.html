@@ -10,14 +10,43 @@
               </div>
           </section>
         <section class="buttons">
-        <button mat-raised-button color="primary"><a>About Us</a></button>
-       <button mat-raised-button color="accent"><a mat-button>How to use the program</a></button>
-       <button mat-raised-button color="primary" class="errorFinder"><a href="/errorFinder" mat-button>Try it out!</a></button>
+        <button mat-raised-button color="primary" class="heroButtons"><a>About Us</a></button>
+       <button mat-raised-button color="accent" class="heroButtons"><a mat-button>How to use the program</a></button>
+       <button mat-raised-button color="primary" class="errorFinder heroButtons"><a href="/errorFinder" mat-button>Try it out!</a></button>
         </section>
     </div>
     <div class="about">
-
+      <h2 class="aboutTitle">About Real Estate Data Error Finder</h2>
+      <section class="aboutSection">
+        <div class="content">
+          <h4>What is this?</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam, delectus quasi iure deserunt corrupti enim provident itaque minus reprehenderit vero praesentium eaque cum rerum totam beatae animi blanditiis ex doloribus?</p>
+          <h4>How it works</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam, delectus quasi iure deserunt corrupti enim provident itaque minus reprehenderit vero praesentium eaque cum rerum totam beatae animi blanditiis ex doloribus?</p>
+        </div>
+        <div class="pictureCon">
+          <div class="paraAbsolute">
+            <h3>
+              Interested in hiring me? See my resume below!
+            </h3>
+            <button class="resume" (click)="openModal()">View Resume</button>
+            <h5>You gotta be quick!</h5>
+            <div class="modal" id="resume-modal">
+              <div class="modal-content">
+                <iframe src="../../../assets/resume.pdf" width="700px" height="100%" class="iframeResume"></iframe>
+                <a href="../../../assets/resume.pdf" download>Download Resume</a>
+                <span class="close" (click)="closeModal()">&times;</span>
+              </div>
+            </div>
+          </div>
+          
+          <img src="../../../assets/Resizer.jpg" class="moving-image">
+            
+        </div>
+      </section>
     </div>
+
+
     <div class="howTo">
         
     </div>

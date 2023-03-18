@@ -14,14 +14,18 @@
 }
 
 
-/* toggle munu closed */
-.closed {
-    height: 4rem
-}
+
 
 /* toggle munu open */
 .open {
-    height: 9rem
+    height: 11rem;
+    transition: all .5s ease-in-out;
+}
+
+/* toggle munu closed */
+.closed {
+    height: 4rem;
+    transition: all .5s ease-in-out;
 }
 
 /* Responsive */
