@@ -20,6 +20,17 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class HomeComponent {
   public isShown = true;
+
+  openModal() {
+    const modal = document.getElementById('resume-modal') as HTMLElement;
+    console.log('worked')
+    modal.style.display = 'block';
+  }
+
+  closeModal() {
+    const modal = document.getElementById('resume-modal') as HTMLElement;
+    modal.style.display = 'none';
+  }
 }
 
 
