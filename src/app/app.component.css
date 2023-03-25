@@ -1,9 +1,9 @@
 
 /* Navbar */
+
 .matToolbar {
     display: flex;
     justify-content: space-between;
-    
 }
 
 /* Navbar links */
@@ -24,7 +24,7 @@
 
 /* toggle munu closed */
 .closed {
-    height: 4rem;
+    height: 3.5rem;
     transition: all .5s ease-in-out;
 }
 
