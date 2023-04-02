@@ -14,6 +14,8 @@ body {
   /* Body */
     display: flex;
     flex-direction: column;
+    width:auto;
+    overflow-x: hidden;
 }
 
 .hero {
@@ -248,7 +250,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 30rem;
+  height: 40rem;
+  background: linear-gradient(to top right,#9C27B0,#FFD900);
+  color: #FFF;
 }
 
 .documentation h3 {
@@ -256,8 +260,29 @@ body {
   align-self: center;
 }
 
-.documentation p {
-  margin: 2rem;
+.exampleSection {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+
+.examplePic {
+  width: 60%;
+  margin-right: 5rem;
+}
+
+.docImage {
+  width: 100%;
+}
+
+
+.exampleExplanation {
+ 
+}
+
+.exampleExplanation ul {
+  width: 100%;
 }
 
 
@@ -328,12 +353,7 @@ body {
 
 
 
-.exampleSection {
-  display: flex;
-  justify-content: space-around;
-  height: 100%;
-  width: 100%;
-}
+
 
 .examplePic {
   height: 10rem;

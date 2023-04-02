@@ -4,6 +4,8 @@
 .matToolbar {
     display: flex;
     justify-content: space-between;
+    background: linear-gradient(to bottom right, #663399, #ffd700);
+
 }
 
 /* Navbar links */
