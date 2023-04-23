@@ -36,12 +36,11 @@ title = 'errorFinder';
 
 }
 
-async findErrors() {
+async findErrors(): Promise<void> {
   const sheetOne = this.spread.getSheet(1);
   let colCount = sheetOne.getColumnCount(GC.Spread.Sheets.SheetArea.viewport)
-  let rowCount = sheetOne.getRowCount(GC.Spread.Sheets.SheetArea.viewport)
-  console.log(rowCount)
-  
+  let rowCount = sheetOne.getRowCount(GC.Spread.Sheets.SheetArea.viewport) 
+
   // Find Row
   for (let row = 0; row < rowCount; row++) {
    
@@ -55,65 +54,87 @@ async findErrors() {
     let landUse = sheetOne.getValue(row, 6)
     let landType = sheetOne.getValue(row, 25)
     let style = new GC.Spread.Sheets.Style();
-    
     style.backColor = "red";
-    // Find row that is a condo
-    if (cellName === 'CONDO' || cellName === 'DUPLEX CONDOS') {
-      
-      // land value should be 0 for condos
-      // grossAc should also be 0 for condos
-      // if not, flag row red
-      if (landValue !== 0 || grossAc !== 0 || 
-          landUse !== "CDO" || landType !== "NL" || 
-          structType !== "Condo" || structName !== "Condo") {
-        sheetOne.setStyle(row,col,style,GC.Spread.Sheets.SheetArea.viewport);
-        this.count++;
-      }
 
-      if (structType !== structName ) {
-        style.backColor = 'green'
-        sheetOne.setStyle(row,0,style,GC.Spread.Sheets.SheetArea.viewport);
-        this.count++;
-      }
+    // find errors for condos
+    this.condoError(cellName, landValue, grossAc, landUse, 
+      landType, structType, structName, row, col, style, sheetOne)
+    
+    // find errors for townhomes
+    this.townhomesError(cellName, landValue, grossAc, 
+      structType, structName, row, col, style, sheetOne)
 
-      // if statement for if floor, type, or view has empty cell, flag for error
-
-
-      // if statement if land type !== "NL"
-    }
-
-    // Townhomes should have land and land value
-    if (cellName === "TOWNHOUSE") {
-      if (landValue === 0 || grossAc === 0 && structType !== structName) {
-        sheetOne.setStyle(row,0,style,GC.Spread.Sheets.SheetArea.viewport)
-        this.count++;
-      }
-
-      if (landValue === 0 || grossAc === 0 ) {
-        sheetOne.setStyle(row,col,style,GC.Spread.Sheets.SheetArea.viewport)
-        this.count++;
-      }
-    }
-
-
-
-
-
-    // These ColNames should not be in condos
-    // const residentialTypes = ["RESIDENTIAL", "COMM CONDO", "MULTIFAMILY 2-4", "APARTMENT", "FEDERAL EXEMPT", "COMMERICAL"];
-    const residentialTypes = ["TOWNHOUSE", "CONDO", "DUPLEX CONDO"];
-if (!residentialTypes.includes(cellName)) {
-  style.backColor = 'orange';
-  sheetOne.setStyle(row, col, style, GC.Spread.Sheets.SheetArea.viewport);
-  this.count++;   
-}
+    // find non condo and townhome errors
+    this.nonRelevantData(cellName, row, col, style, sheetOne)
    }
   }
 
   alert('Done! Please press "Save Excel!" to download updated Excel spread sheet')
 }
 
+condoError(cellName: string, landValue: number, 
+  grossAc: number, landUse: string, 
+  landType: string, structType: string, 
+  structName: string, row: number, col: number,
+  style: GC.Spread.Sheets.Style, sheetOne: GC.Spread.Sheets.Worksheet): void {
+
+// Find row that is a condo
+if (cellName === 'CONDO' || cellName === 'DUPLEX CONDOS') {
+      
+  // land value should be 0 for condos
+  // grossAc should also be 0 for condos
+  // if not, flag row red
+  if (landValue !== 0 || grossAc !== 0 || 
+      landUse !== "CDO" || landType !== "NL" || 
+      structType !== "Condo" || structName !== "Condo") {
+    sheetOne.setStyle(row,col,style,GC.Spread.Sheets.SheetArea.viewport);
+    this.count++;
+  }
+
+  if (structType !== structName ) {
+    style.backColor = 'green'
+    sheetOne.setStyle(row,0,style,GC.Spread.Sheets.SheetArea.viewport);
+    this.count++;
+  }
+
+  // if statement for if floor, type, or view has empty cell, flag for error
+
+
+  // if statement if land type !== "NL"
+}
+}
+
+townhomesError(cellName: string, landValue: number, 
+  grossAc: number, structType: string, 
+  structName: string, row: number, col: number, 
+  style: GC.Spread.Sheets.Style, sheetOne: GC.Spread.Sheets.Worksheet) {
+      // Townhomes should have land and land value
+      if (cellName === "TOWNHOUSE") {
+        if (landValue === 0 || grossAc === 0 && structType !== structName) {
+          sheetOne.setStyle(row,0,style,GC.Spread.Sheets.SheetArea.viewport)
+          this.count++;
+        }
+  
+        if (landValue === 0 || grossAc === 0 ) {
+          sheetOne.setStyle(row,col,style,GC.Spread.Sheets.SheetArea.viewport)
+          this.count++;
+        }
+      }
+}
+
+nonRelevantData(cellName: string, row: number, col: number, 
+  style: GC.Spread.Sheets.Style, sheetOne: GC.Spread.Sheets.Worksheet): void {
+    // These ColNames should not be in condos
+    const otherTypes = ["RESIDENTIAL", "COMM CONDO", "MULTIFAMILY 2-4", "APARTMENT", "FEDERAL EXEMPT", "COMMERICAL"];
+    if (otherTypes.includes(cellName)) {
+      style.backColor = 'orange';
+      sheetOne.setStyle(row, col, style, GC.Spread.Sheets.SheetArea.viewport);
+      this.count++;   
+    }
+}
+
 onFileChange(args: any) {
+  console.log(args)
   const self = this, file = args.srcElement && args.srcElement.files && args.srcElement.files[0];
   if (self.spread && file) {
     self.excelIO.open(file, (json: any) => {
@@ -139,5 +160,3 @@ onClickMe(args: any) {
 }
 
 }
-
-

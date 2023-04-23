@@ -3,17 +3,17 @@
     <div class="container">
   
       <div class="buttons">
-        <div class='loadExcelInput'>
+        <div class="loadExcelInput">
           <h3>1. </h3>
           <input type="file" name="files[]" multiple id="jsonFile" accept=".xlsx" (change)="onFileChange($event)" />
         </div>
   
-        <div class='exportExcel'>
+        <div class="exportExcel">
           <h3>2. </h3>
           <button (click)="findErrors()">Find Errors</button>
         </div>
   
-        <div class='exportExcel'>
+        <div class="exportExcel">
           <h3>3. </h3>
           <button (click)="onClickMe($event)">Save Excel!</button>
         </div>
