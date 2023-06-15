@@ -1,1 +1,60 @@
-<p>documentation works!</p>
+<!-- Header -->
+<header>
+    <h1>Documentation</h1>
+  </header>
+  
+  <!-- Content -->
+  <main>
+    <div class="sidebar">
+      <!-- Sidebar menu goes here -->
+      <ul>
+        <li><a href="#section-1">Section 1</a></li>
+        <li><a href="#section-2">Section 2</a></li>
+        <li><a href="#section-3">Section 3</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <!-- Documentation sections go here -->
+      <section id="section-1">
+        <h2>FAQ</h2>
+        <div class="faq-container">
+            <div class="faq-question" (click)="toggleAnswer(1)">
+              <h3>What is Real Estate Error Finder?</h3>
+              <div class="faq-answer" id="faq-answer-1">
+                <p>Answer to question 1 goes here.</p>
+              </div>
+            </div>
+        
+            <div class="faq-question" (click)="toggleAnswer(2)">
+              <h3>Question 2?</h3>
+              <div class="faq-answer" id="faq-answer-2">
+                <p>Answer to question 2 goes here.</p>
+              </div>
+            </div>
+        
+            <div class="faq-question" (click)="toggleAnswer(3)">
+              <h3>Question 3?</h3>
+              <div class="faq-answer" id="faq-answer-3">
+                <p>Answer to question 3 goes here.</p>
+              </div>
+            </div>
+          </div>
+        
+      </section>
+  
+      <section id="section-2">
+        <h2>Section 2</h2>
+        <p>Content of section 2 goes here...</p>
+      </section>
+  
+      <section id="section-3">
+        <h2>Section 3</h2>
+        <p>Content of section 3 goes here...</p>
+      </section>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Your Documentation Website</p>
+  </footer>
